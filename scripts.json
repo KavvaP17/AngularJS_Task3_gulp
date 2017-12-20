@@ -1,0 +1,14 @@
+[
+    "./node_modules/angular/angular.min.js",
+    "./node_modules/angular-ui-router/release/angular-ui-router.min.js",
+    "./src/js/app.js",
+    "./src/js/common/configs/moduleConfig.js",
+    "./src/js/pages/home/routing.js",
+    "./src/js/pages/contactAdd/routing.js",
+    "./src/js/pages/contactEdit/routing.js",
+    "./src/js/common/services/ContactListService.js",
+    "./src/js/pages/home/filters/searchFilter.js",
+    "./src/js/pages/home/controllers/HomeCtrl.js",
+    "./src/js/pages/contactAdd/controllers/ContactAddCtrl.js",
+    "./src/js/pages/contactEdit/controllers/ContactEditCtrl.js"
+]
