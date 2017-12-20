@@ -9,17 +9,30 @@ const rename = require('gulp-rename');
 const browserSync = require('browser-sync').create();
 
 const scripts = require('./scripts');
-const styles = require('./styles');
+const libs = require('./libs');
 
 var devMode = false;
 
 gulp.task('css', function() {
-    gulp.src(styles)
+    gulp.src('./src/css/**/*.css')
         .pipe(concat('style.css'))
         .pipe(minifyCSS({
             keepBreaks: true
         }))
         .pipe(gulp.dest('dist/css'))
+        .pipe(browserSync.reload({
+            stream: true
+        }));
+});
+
+gulp.task('lib', function() {
+    gulp.src(libs)
+        .pipe(babel({
+            presets: ['latest']
+        }))
+        .pipe(concat('libs.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/lib'))
         .pipe(browserSync.reload({
             stream: true
         }));
@@ -58,7 +71,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('build', function() {
-    gulp.start(['css', 'js', 'html'])
+    gulp.start(['css','lib','js', 'html'])
 });
 
 gulp.task('browser-sync', function() {
